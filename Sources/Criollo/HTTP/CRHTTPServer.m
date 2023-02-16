@@ -53,7 +53,7 @@
         if (self.identityPath.length > 0) {
             self.certificates = [self.httpsHelper parseIdentrityFile:self.identityPath password:self.password error:error];
         }
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
         else if (self.certificatePath.length > 0 && self.privateKeyPath.length > 0) {
             self.certificates = [self.httpsHelper parseCertificateFile:self.certificatePath privateKeyFile:self.privateKeyPath error:error];
         }
@@ -62,7 +62,7 @@
             *error = [[NSError alloc] initWithDomain:CRHTTPSErrorDomain code:CRHTTPSMissingCredentialsError userInfo:@{
                 NSLocalizedDescriptionKey: NSLocalizedString(@"Unable to parse credential settings.",),
                 CRHTTPSIdentityPathKey: self.identityPath ? : @"(null)",
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
                 CRHTTPSCertificatePathKey: self.certificatePath ? : @"(null)",
                 CRHTTPSCertificateKeyPathKey: self.privateKeyPath ? : @"(null)"
 #endif
@@ -72,7 +72,7 @@
         // Clear sensitive data from memory
         self.identityPath = nil;
         self.password = nil;
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
         self.certificatePath = nil;
         self.privateKeyPath = nil;
 #endif

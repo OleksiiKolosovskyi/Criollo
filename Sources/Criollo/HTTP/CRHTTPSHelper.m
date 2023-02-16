@@ -16,7 +16,7 @@ NSUInteger const CRHTTPSMissingCredentialsError          = 1005;
 
 NSString * const CRHTTPSIdentityPathKey                  = @"CRHTTPSIdentityPath";
 
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
 
 NSUInteger const CRHTTPSInvalidCertificateError          = 1001;
 NSUInteger const CRHTTPSInvalidPrivateKeyError           = 1002;
@@ -32,13 +32,13 @@ OSStatus keychainCallback(SecKeychainEvent keychainEvent, SecKeychainCallbackInf
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CRHTTPSHelper () {
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
     NSString *_keychainPassword;
     NSString *_keychainPath;
 #endif
 }
 
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
 
 @property (nonatomic, nullable) SecKeychainRef keychain;
 
@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_END
     NSMutableDictionary *identityImportOptions = [NSMutableDictionary dictionary];
     identityImportOptions[(id)kSecImportExportPassphrase] = password ? : @"";
     
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
     identityImportOptions[(id)kSecImportExportKeychain] = (__bridge id)self.keychain;
 #endif
     
@@ -82,7 +82,7 @@ NS_ASSUME_NONNULL_END
         if ( error != nil ) {
             NSUInteger errorCode = (identityImportStatus == errSecAuthFailed || identityImportStatus == errSecPkcs12VerifyFailure) ? CRHTTPSInvalidPasswordError : CRHTTPSInvalidIdentityError;
             NSString *errorMessage;
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
             errorMessage = (NSString *)CFBridgingRelease(SecCopyErrorMessageString(identityImportStatus, NULL));
 #else
             if ( errorCode == CRHTTPSInvalidPasswordError ) {
@@ -108,7 +108,7 @@ NS_ASSUME_NONNULL_END
     return result;
 }
 
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
 
 - (NSArray *)parseCertificateFile:(NSString *)certificatePath privateKeyFile:(NSString *)privateKeyPath error:(NSError *__autoreleasing  _Nullable * _Nullable)error {
     NSError * certReadError;
@@ -248,7 +248,7 @@ NS_ASSUME_NONNULL_END
 
 @end
 
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
 
 OSStatus keychainCallback(SecKeychainEvent keychainEvent, SecKeychainCallbackInfo *info, void * __nullable context) {
     CRHTTPSHelper *httpsHelper = (__bridge CRHTTPSHelper *)context;

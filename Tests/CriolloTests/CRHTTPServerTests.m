@@ -187,7 +187,7 @@
 
 #pragma mark - Certificates
 
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
 
 - (void)test_isSecure_InvalidCertificatePath_failsWithInvalidCertificateError {
     CRHTTPServerCreate();

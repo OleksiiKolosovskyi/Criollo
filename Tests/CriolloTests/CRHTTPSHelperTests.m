@@ -8,7 +8,7 @@
 #import <XCTest/XCTest.h>
 #import "CRHTTPSHelper.h"
 
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
 @interface CRHTTPSHelper ()
 @property (nonatomic) SecKeychainRef keychain;
 @end
@@ -103,7 +103,7 @@
 
 #pragma mark - Certificates
 
-#if SEC_OS_OSX_INCLUDES
+#if 0 // SEC_OS_OSX_INCLUDES
 
 - (void)test_parseCertificateFilePrivateKeyFile_InvalidCertificatePath_failsWithInvalidCertificateError {
         NSError *error;
